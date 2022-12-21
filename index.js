@@ -3,10 +3,10 @@ const logger = require('./start/logger')
 const express = require('express')
 
 
-
 dotenv.config()
-
 const app = express()
+
+require('express-async-errors')
 require('./start/db')()
 require('./start/routes')(app)
 require('./start/validation')()

@@ -1,10 +1,11 @@
 const express = require('express')
 const { User, validateUser } = require('../models/User')
-const router = express()
+const router = express.Router()
 const _ = require('lodash')
 const bcrypt = require('bcrypt')
+const auth = require('../middleware/auth')
 
-router.get('/', async (req, res) => {
+router.get('/me', auth, async (req, res) => {
     const users = await User.find()
     res.send(users).status(200)
 })
@@ -23,13 +24,13 @@ router.post("/", async (req, res) => {
     const { error } = validateUser(userReq)
     if (error) return res.status(400).send(error.details[0].message)
     const user = await User.findOne({ email: req.body.email })
-   
+
     if (user) return res.status(400).send("User already exits")
-    
+
     const salt = await bcrypt.genSalt(10)
-    const newUser = new User(_.pick(userReq, [ 'name','email', 'password']))
+    const newUser = new User(_.pick(userReq, ['name', 'email', 'password']))
     const token = newUser.generateAuthToken()
-    
+
     newUser.password = await bcrypt.hash(newUser.password, salt)
     await newUser.save()
     res.header('x-auth-token', token).json(_.pick(newUser, ['_id', 'name', 'email']))
