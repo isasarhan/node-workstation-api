@@ -2,11 +2,10 @@ const mongoose = require('mongoose')
 const Joi = require('joi')
 
 const employeeSchema = new mongoose.Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    gender: { type: String, required: true },
-    avatar: { type: String, required: true },
-    designation: { type: String, required: true },
+    name: { type: String, required: true },
+    gender: { type: String  },
+    avatar: { type: String },
+    designation: { type: String },
     mobile: { type: String, required: true },
     salary: { type: Number, required: true }
 })

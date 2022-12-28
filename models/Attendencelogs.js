@@ -4,8 +4,9 @@ const Joi = require('joi')
 const attendenceSchema = new mongoose.Schema({
     employee: {
         type: new mongoose.Schema({
-            firstName: { type: String },
-            lastName: { type: String },
+            _id: false,
+            employeeId: { type: String },
+            name: { type: String },
         })
     },
     checkIn: { type: Date, default: Date.now },
@@ -15,13 +16,13 @@ const attendenceSchema = new mongoose.Schema({
 
 const Attendence = mongoose.model("Attendence", attendenceSchema)
 
-
 function validateAttendence(attendence) {
     const schema = Joi.object({
         employeeId: Joi.required().objectId(),
+        name: Joi.string().required(),
         checkIn: Joi.date(),
         checkOut: Joi.date(),
     })
     return schema.validate(attendence)
 }
-module.exports = { Attendence, validateAttendence}
+module.exports = { Attendence, validateAttendence }

@@ -5,7 +5,7 @@ const _ = require('lodash')
 const bcrypt = require('bcrypt')
 const auth = require('../middleware/auth')
 
-router.get('/me', auth, async (req, res) => {
+router.get('/', auth, async (req, res) => {
     const users = await User.find()
     res.send(users).status(200)
 })
@@ -13,27 +13,26 @@ router.get('/me', auth, async (req, res) => {
 router.get("/:id", async (req, res) => {
     const user = await User.findById(req.params.id)
     if (!user) res.status(404).send("User not found")
+    res.json(user).status(200)
 })
 
-router.post("/", async (req, res) => {
-    const userReq = {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    }
-    const { error } = validateUser(userReq)
-    if (error) return res.status(400).send(error.details[0].message)
-    const user = await User.findOne({ email: req.body.email })
-
-    if (user) return res.status(400).send("User already exits")
-
+router.put('/:id', auth, async (req, res) => {
     const salt = await bcrypt.genSalt(10)
-    const newUser = new User(_.pick(userReq, ['name', 'email', 'password']))
-    const token = newUser.generateAuthToken()
+    req.body.password = await bcrypt.hash(req.body.password, salt)
 
-    newUser.password = await bcrypt.hash(newUser.password, salt)
-    await newUser.save()
-    res.header('x-auth-token', token).json(_.pick(newUser, ['_id', 'name', 'email']))
+    const user = User.findByIdAndUpdate(
+        req.body.id,
+        {
+            $set: req.body
+        },
+        { new: true }
+    )
+    res.send(user)
+
 })
-
+router.delete('/:id', [auth, admin], async (req, res) => {
+    const user = await User.findByIdAndDelete(req.params.id)
+    if(!user) return res.status(404).send("User not found")
+    res.status(200).send("User deleted").json(user)
+})
 module.exports = router
