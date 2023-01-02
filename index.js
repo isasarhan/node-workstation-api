@@ -13,6 +13,6 @@ require('./start/validation')()
 require('./start/prod')(app)
 
 
-app.listen(PORT,'0.0.0.0',
+app.listen(PORT, '0.0.0.0',
     () => logger.info(`listening to port ${PORT}...`))
 
