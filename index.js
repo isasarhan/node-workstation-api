@@ -9,7 +9,7 @@ const app = express()
 require('./start/db')()
 require('./start/routes')(app)
 require('./start/validation')()
-
+require('./start/prod')(app)
 
 app.listen(process.env.PORT || 200,
     () => logger.info(`listening to port ${process.env.PORT}...`))
