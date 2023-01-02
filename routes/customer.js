@@ -2,7 +2,6 @@ const express = require('express')
 const admin = require('../middleware/admin')
 const auth = require('../middleware/auth')
 const router = express.Router()
-const bcrypt = require('bcrypt')
 const { Customer, validateCustomer } = require('../models/Customer')
 
 router.get('/', async (req, res) => {

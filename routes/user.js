@@ -4,6 +4,7 @@ const router = express.Router()
 const _ = require('lodash')
 const bcrypt = require('bcrypt')
 const auth = require('../middleware/auth')
+const admin = require('../middleware/admin')
 
 router.get('/', auth, async (req, res) => {
     const users = await User.find()
