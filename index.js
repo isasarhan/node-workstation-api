@@ -11,6 +11,6 @@ require('./start/routes')(app)
 require('./start/validation')()
 require('./start/prod')(app)
 
-app.listen(process.env.PORT || 2000,
+app.listen(process.env.PORT || 2000,'0.0.0.0',
     () => logger.info(`listening to port ${process.env.PORT}...`))
 
