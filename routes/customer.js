@@ -63,4 +63,5 @@ router.delete('/:id', [auth, admin], async (req, res) => {
     const deleted = await Customer.deleteOne(customer)
     res.send(deleted)
 })
+
 module.exports = router
