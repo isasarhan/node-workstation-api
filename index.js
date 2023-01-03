@@ -8,9 +8,9 @@ dotenv.config()
 const PORT = process.env.PORT || 2000;
 
 require('./start/db')()
-require('./start/routes')(app)
+// require('./start/routes')(app)
 require('./start/validation')()
-// require('./start/prod')(app)s
+require('./start/prod')(app)
 
 
 app.listen(PORT, '0.0.0.0',
