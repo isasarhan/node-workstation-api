@@ -9,7 +9,7 @@ const attendenceRouter = require('../routes/attendence')
 const { errorHandler } = require('../middleware/error')
 
 module.exports = (app) => {
-    app.use(express.json())
+    // app.use(express.json())
     // app.use('/api/attendence/', attendenceRouter)
     // app.use('/api/auth/', authRouter)
     // app.use('/api/balance/', balanceRouter)
@@ -17,5 +17,5 @@ module.exports = (app) => {
     // app.use('/api/employees/', employeeRouter)
     // app.use('/api/orders/', orderRouter)
     // app.use('/api/users/', userRouter)
-    app.use(errorHandler)
+    // app.use(errorHandler)
 }
