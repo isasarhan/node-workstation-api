@@ -8,7 +8,7 @@ const balanceRouter = require('../routes/balance')
 const attendenceRouter = require('../routes/attendence')
 const { errorHandler } = require('../middleware/error')
 
-module.exports = (app) => {
+module.exports = function (app){
     app.use(express.json())
     app.use('/api/attendence/', attendenceRouter)
     app.use('/api/auth/', authRouter)
