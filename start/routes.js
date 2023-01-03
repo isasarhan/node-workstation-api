@@ -10,12 +10,12 @@ const { errorHandler } = require('../middleware/error')
 
 module.exports = (app) => {
     app.use(express.json())
-    app.use('/api/attendence/', attendenceRouter)
-    app.use('/api/auth/', authRouter)
-    app.use('/api/balance/', balanceRouter)
+    // app.use('/api/attendence/', attendenceRouter)
+    // app.use('/api/auth/', authRouter)
+    // app.use('/api/balance/', balanceRouter)
     app.use('/api/customers/', customerRouter)
-    app.use('/api/employees/', employeeRouter)
-    app.use('/api/orders/', orderRouter)
-    app.use('/api/users/', userRouter)
+    // app.use('/api/employees/', employeeRouter)
+    // app.use('/api/orders/', orderRouter)
+    // app.use('/api/users/', userRouter)
     app.use(errorHandler)
 }
