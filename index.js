@@ -7,10 +7,10 @@ const cors = require('cors')
 dotenv.config()
 
 app.use(cors())
-require('./start/routes')(app)
 require('./start/db')()
 require('./start/validation')()
 require('./start/prod')(app)
+require('./start/routes')(app)
 
 
 const PORT = process.env.PORT || 2000;
