@@ -4,7 +4,6 @@ const logger = require('./start/logger')
 const dotenv = require('dotenv')
 const cors = require('cors')
 
-
 const customerRouter = require('./routes/customer')
 const balanceRouter = require('./routes/balance')
 
@@ -16,7 +15,7 @@ app.use(express.json())
 // require('./start/routes')(app)
 
 app.use('/api/customers/', customerRouter)
-app.use('/api/balances/', balanceRouter)
+// app.use('/api/balance/', balanceRouter)
 
 require('./start/validation')()
 

@@ -12,7 +12,7 @@ module.exports = function (app){
     app.use(express.json())
     app.use('/api/attendence/', attendenceRouter)
     app.use('/api/auth/', authRouter)
-    app.use('/api/balance/', balanceRouter)
+    app.use('/api/balances/', balanceRouter)
     app.use('/api/customers/', customerRouter)
     app.use('/api/employees/', employeeRouter)
     app.use('/api/orders/', orderRouter)
