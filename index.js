@@ -4,11 +4,26 @@ const logger = require('./start/logger')
 const dotenv = require('dotenv')
 const cors = require('cors')
 
+
+const userRouter = require('./routes/user')
+const customerRouter = require('./routes/customer')
+const authRouter = require('./routes/auth')
+const orderRouter = require('./routes/order')
+const employeeRouter = require('./routes/employee')
+const balanceRouter = require('./routes/balance')
+const attendenceRouter = require('./routes/attendence')
 dotenv.config()
 
 app.use(cors())
 require('./start/db')()
-require('./start/routes')(app)
+
+app.use('/api/attendence/', attendenceRouter)
+app.use('/api/auth/', authRouter)
+app.use('/api/balance/', balanceRouter)
+app.use('/api/customers/', customerRouter)
+app.use('/api/employees/', employeeRouter)
+app.use('/api/orders/', orderRouter)
+app.use('/api/users/', userRouter)
 require('./start/validation')()
 
 
