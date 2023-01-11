@@ -1,16 +1,15 @@
-const dotenv = require('dotenv')
-const logger = require('./start/logger')
 const express = require('express')
 const app = express()
+const logger = require('./start/logger')
+const dotenv = require('dotenv')
 const cors = require('cors')
 
 dotenv.config()
 
 app.use(cors())
 require('./start/db')()
-require('./start/validation')()
-require('./start/prod')(app)
 require('./start/routes')(app)
+require('./start/validation')()
 
 
 const PORT = process.env.PORT || 2000;
