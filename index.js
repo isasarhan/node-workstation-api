@@ -13,7 +13,7 @@ dotenv.config()
 app.use(cors())
 require('./start/db')()
 app.use(express.json())
-require('./start/routes')(app)
+// require('./start/routes')(app)
 
 app.use('/api/customers/', customerRouter)
 app.use('/api/balances/', balanceRouter)
