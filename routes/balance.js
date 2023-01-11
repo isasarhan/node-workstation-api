@@ -37,7 +37,7 @@ router.put('/:id', async (req, res) => {
     const { error } = validateBalance(req.body)
     if (error) return res.status(400).send(error.details[0].message)
 
-    const customer = await Customer.findById(req.body.employeeId)
+    const customer = await Customer.findById(req.body.customerid)
     if (!customer) return res.status(404).send("Customer doesnt exist").end()
 
     let balance = await Balance.findByIdAndUpdate(req.params.id,
@@ -56,6 +56,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const deleted = await Balance.findByIdAndDelete(req.params.id)
     if (!deleted) return res.status(404).send("Balance doesnt exist").end()
+    res.send(deleted)
 
 })
 module.exports = router

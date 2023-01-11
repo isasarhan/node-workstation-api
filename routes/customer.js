@@ -52,7 +52,7 @@ router.put('/:id', async (req, res) => {
         },
         { new: true }
     )
-    if (!customer) return res.status(404).send("Employee Not Found!!")
+    if (!customer) return res.status(404).send("Customer Not Found!!")
 
     res.send(customer).status(200).end()
 })
