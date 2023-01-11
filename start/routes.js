@@ -17,5 +17,4 @@ module.exports = function (app){
     app.use('/api/employees/', employeeRouter)
     app.use('/api/orders/', orderRouter)
     app.use('/api/users/', userRouter)
-    app.use(errorHandler)
 }
