@@ -6,6 +6,7 @@ const cors = require('cors')
 
 
 const customerRouter = require('./routes/customer')
+const userRouter = require('./routes/user')
 
 dotenv.config()
 
@@ -14,6 +15,7 @@ require('./start/db')()
 app.use(express.json())
 
 app.use('/api/customers/', customerRouter)
+app.use('/api/users/', userRouter)
 
 require('./start/validation')()
 
