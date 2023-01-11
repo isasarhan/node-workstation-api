@@ -13,9 +13,9 @@ dotenv.config()
 app.use(cors())
 require('./start/db')()
 app.use(express.json())
-
+// require('./start/routes')(app)
 app.use('/api/customers/', customerRouter)
-app.use('/api/users/', userRouter)
+// app.use('/api/users/', userRouter)
 
 require('./start/validation')()
 
