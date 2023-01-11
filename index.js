@@ -12,7 +12,6 @@ app.use(cors())
 require('./start/db')()
 require('./start/validation')()
 require('./start/prod')(app)
-app.use(express.json())
 
 app.use('/api/customers/', customerRouter)
 app.use(errorHandler)
