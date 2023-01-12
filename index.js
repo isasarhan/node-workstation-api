@@ -7,7 +7,7 @@ const cors = require('cors')
 const customerRouter = require('./routes/customer')
 const balanceRouter = require('./routes/balance')
 
-// dotenv.config()
+dotenv.config()
 
 // app.use(cors())
 require('./start/db')()
