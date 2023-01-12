@@ -11,7 +11,7 @@ dotenv.config()
 
 // app.use(cors())
 require('./start/db')()
-require('./start/routes')(app)
+// require('./start/routes')(app)
 require('./start/prod')(app)
 // app.use('/api/customers/', customerRouter)
 // app.use('/api/balance/', balanceRouter)
