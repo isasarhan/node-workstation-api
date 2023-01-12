@@ -7,14 +7,13 @@ const cors = require('cors')
 const customerRouter = require('./routes/customer')
 const balanceRouter = require('./routes/balance')
 
-dotenv.config()
+// dotenv.config()
 
-app.use(cors())
+// app.use(cors())
 require('./start/db')()
-app.use(express.json())
-// require('./start/routes')(app)
-
-app.use('/api/customers/', customerRouter)
+require('./start/routes')(app)
+require('./start/prod')(app)
+// app.use('/api/customers/', customerRouter)
 // app.use('/api/balance/', balanceRouter)
 
 require('./start/validation')()
