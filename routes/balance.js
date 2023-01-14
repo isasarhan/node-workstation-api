@@ -22,16 +22,17 @@ router.post('/', async (req, res) => {
     const customer = await Customer.findById(req.body.customerid)
     if (!customer) return res.status(404).send("Customer doesnt exist").end()
 
+    
     let balance = new Balance({
         cash: req.body.cash,
         gold: req.body.gold,
         customer: {
             customerid: req.body.customerid,
             name: req.body.name
-        }
+        } 
     })
     balance = await balance.save()
-    res.json(balance).status(201).end()
+    res.send(balance).status(201).end()
 })
 router.put('/:id', async (req, res) => {
     const { error } = validateBalance(req.body)

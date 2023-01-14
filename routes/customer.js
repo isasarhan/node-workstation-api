@@ -14,7 +14,7 @@ router.get("/:id", async (req, res) => {
     if (!customer) return res.status(404).send("Customer Not Found!")
     res.json(customer).status(200)
 })
-
+ 
 router.post("/", async (req, res) => {
     let customer = new Customer({
         name: req.body.name,
@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
     if (searched) return res.status(400).send("Customer already exits")
     customer = await customer.save()
 
-    res.send(customer)
+    res.send(customer) 
 })
 
 router.put('/:id', async (req, res) => {
