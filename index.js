@@ -1,23 +1,24 @@
 const express = require('express')
 // // const logger = require('./start/logger')
 // // const dotenv = require('dotenv')
-// const cors = require('cors')
+const cors = require('cors')
 const app = express()
 const port = process.env.PORT || 3333;
 
 
 // // dotenv.config()
-// // app.use(cors())
 
-// // require('./start/routes')(app)
-// require('./start/db')()
+app.use(cors())
+
+require('./start/routes')(app)
+require('./start/db')()
 
 app.get('/', (req, res) => {
     res.json({ message: "Ali fixed this!"})
 })
 
-// require('./start/validation')()
-// // require('./start/prod')(app)
+require('./start/validation')()
+require('./start/prod')(app)
 
 
 // app.listen(PORT, () => logger.info(`listening to port ${PORT}...`))
