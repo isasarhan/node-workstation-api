@@ -10,15 +10,15 @@ const port = process.env.PORT || 3333;
 
 app.use(cors())
 
-// require('./start/routes')(app)
-// require('./start/db')()
+require('./start/routes')(app)
+require('./start/db')()
 
 app.get('/', (req, res) => {
     res.json({ message: "Ali fixed this!"})
 })
 
-// require('./start/validation')()
-// require('./start/prod')(app)
+require('./start/validation')()
+require('./start/prod')(app)
 
 
 // app.listen(PORT, () => logger.info(`listening to port ${PORT}...`))
