@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { Balance, validateBalance } = require("../models/Balance.js")
 // const { Balance, validateBalance } = require("../models/balance") // hek ya issa hek, mn wen jibtille balance --> 7abibe Balance.js
-const { Customer } = require('../models/Customer')
+const { Customer } = require('../models/Customer.js')
 
 router.get('/', async (req, res) => {
     const balances = await Balance.find()
