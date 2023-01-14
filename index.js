@@ -1,12 +1,12 @@
 const express = require('express')
-// // const logger = require('./start/logger')
-// // const dotenv = require('dotenv')
+const logger = require('./start/logger')
+const dotenv = require('dotenv')
 const cors = require('cors')
 const app = express()
 const port = process.env.PORT || 3333;
 
 
-// // dotenv.config()
+ dotenv.config()
 
 app.use(cors())
 
