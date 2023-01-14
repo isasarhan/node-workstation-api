@@ -2,7 +2,8 @@ const express = require('express')
 // // const logger = require('./start/logger')
 // // const dotenv = require('dotenv')
 // const cors = require('cors')
-// const app = express()
+const app = express()
+const port = process.env.PORT || 3333;
 
 
 // // dotenv.config()
@@ -11,19 +12,18 @@ const express = require('express')
 // // require('./start/routes')(app)
 // require('./start/db')()
 
-// app.get('/', async (req, res) => {
-//     res.json(customers)
-// })
+app.get('/', (req, res) => {
+    res.json({ message: "Ali fixed this!"})
+})
 
 // require('./start/validation')()
 // // require('./start/prod')(app)
 
-// const PORT = process.env.PORT || 3333;
 
-// // app.listen(PORT, () => logger.info(`listening to port ${PORT}...`))
-// app.listen(port, () => {
-//     console.log(`Example app listening at http://localhost:${port}`);
-//   });
+// app.listen(PORT, () => logger.info(`listening to port ${PORT}...`))
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+  });
 
 
 
@@ -36,32 +36,32 @@ const express = require('express')
 
 
 
-"use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-// import "./lib/db";
-const express_1 = __importDefault(require("express"));
-// import countryRoutes from "./routes/country";
-const app = (0, express_1.default)();
-const port = process.env.PORT || 3333;
-app.use(express_1.default.json());
-app.use(express_1.default.raw({ type: "application/vnd.custom-type" }));
-app.use(express_1.default.text({ type: "text/html" }));
-app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.json({ message: "Testing" });
-}));
-// app.use("/countries", countryRoutes);
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-});
+// "use strict";
+// var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+//     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+//     return new (P || (P = Promise))(function (resolve, reject) {
+//         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+//         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+//         function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+//         step((generator = generator.apply(thisArg, _arguments || [])).next());
+//     });
+// };
+// var __importDefault = (this && this.__importDefault) || function (mod) {
+//     return (mod && mod.__esModule) ? mod : { "default": mod };
+// };
+// Object.defineProperty(exports, "__esModule", { value: true });
+// // import "./lib/db";
+// const express_1 = __importDefault(require("express"));
+// // import countryRoutes from "./routes/country";
+// const app = (0, express_1.default)();
+// const port = process.env.PORT || 3333;
+// app.use(express_1.default.json());
+// app.use(express_1.default.raw({ type: "application/vnd.custom-type" }));
+// app.use(express_1.default.text({ type: "text/html" }));
+// app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+//     res.json({ message: "Testing" });
+// }));
+// // app.use("/countries", countryRoutes);
+// app.listen(port, () => {
+//     console.log(`Example app listening at http://localhost:${port}`);
+// });
