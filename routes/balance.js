@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const { Balance, validateBalance } = require("../models/balance")
+const { Balance, validateBalance } = require("../models/Balance.js")
+// const { Balance, validateBalance } = require("../models/balance") // hek ya issa hek, mn wen jibtille balance --> 7abibe Balance.js
 const { Customer } = require('../models/Customer')
 
 router.get('/', async (req, res) => {
