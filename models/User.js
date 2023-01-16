@@ -10,7 +10,7 @@ const schema = new Schema({
 
 })
 schema.methods.generateAuthToken = function () {
-    const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, process.env.jwtSecretKey)
+    const token = jwt.sign({ _id: this._id, name: this.name, email:this.email, isAdmin: this.isAdmin }, process.env.jwtSecretKey)
     return token
 }
 

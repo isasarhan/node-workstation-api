@@ -22,9 +22,6 @@ router.post('/login', async (req, res) => {
 })
 //register
 router.post("/register", async (req, res) => {
-
-    console.log(req.body)
-    //userReq = req.body
     const { error } = validateUser(req.body)
     if (error) return res.status(400).send(error.details[0].message)
     let newUser = new User(
@@ -49,12 +46,4 @@ router.post("/register", async (req, res) => {
     .json(_.pick(newUser, ['_id', 'name', 'email']))
 })
 
-// function validateUser(user) {
-//     const schema = Joi.object({
-//         name: Joi.string().required().min(5).max(10),
-//         email: Joi.string().required(),
-//         password: Joi.string().required().min(5).max(1024),
-//     })
-//     return schema.validate(user)
-// }
 module.exports = router
