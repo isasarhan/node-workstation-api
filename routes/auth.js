@@ -44,7 +44,9 @@ router.post("/register", async (req, res) => {
 
     newUser.password = await bcrypt.hash(newUser.password, salt)
     await newUser.save()
-    res.header('x-auth-token', token).json(_.pick(newUser, ['_id', 'name', 'email']))
+    res.header('x-auth-token', token)
+    .header('access-control-expose-headers', 'x-auth-token')
+    .json(_.pick(newUser, ['_id', 'name', 'email']))
 })
 
 // function validateUser(user) {
